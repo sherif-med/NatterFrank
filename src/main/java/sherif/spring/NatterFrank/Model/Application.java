@@ -1,7 +1,8 @@
 package sherif.spring.NatterFrank.Model;
 
-public class Application {
 
+
+public class Application {
     private String JobId;
     private String CandidateId;
     private String EmployerId;
