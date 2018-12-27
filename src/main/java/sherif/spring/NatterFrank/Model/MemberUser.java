@@ -1,5 +1,6 @@
 package sherif.spring.NatterFrank.Model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -32,12 +33,12 @@ public class MemberUser extends Person{
     public MemberUser() {
     }
 
-    public MemberUser(String username, String password) {
-        super(username, password);
+    public MemberUser(ObjectId _id, String username, String password) {
+        super(_id, username, password);
     }
 
-    public MemberUser(String username, String password, String firstName, String lastName, Date birthDate, int age, String email, String nickname, String bio, byte gender, String phoneNumber, String occupation, String[] skills, Date memberSince, String organization, String country, String gouvernerat, int zipCode, String aderess, float adrLong, float adrLat, String[] postOccupations, float trustScore, String resume) {
-        super(username, password);
+    public MemberUser(ObjectId _id, String username, String password, String firstName, String lastName, Date birthDate, int age, String email, String nickname, String bio, byte gender, String phoneNumber, String occupation, String[] skills, Date memberSince, String organization, String country, String gouvernerat, int zipCode, String aderess, float adrLong, float adrLat, String[] postOccupations, float trustScore, String resume) {
+        super(_id, username, password);
         FirstName = firstName;
         LastName = lastName;
         BirthDate = birthDate;

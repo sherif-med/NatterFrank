@@ -1,57 +1,72 @@
 package sherif.spring.NatterFrank.Model;
 
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Application {
-    private String JobId;
-    private String CandidateId;
-    private String EmployerId;
-    private int Status; //taken or waiting ...
+    @Id
+    private ObjectId _id;
+    private ObjectId jobId ;
+    private ObjectId candidateId;
+    private ObjectId employerId ;
+    private int status; //taken or waiting ...
     private int opinion; //Satisfied or not ...
     private int ranking; //candidate rank overall in candidates
 
     public Application() {
     }
 
-    public Application(String jobId, String candidateId, String employerId, int status, int opinion, int ranking) {
-        JobId = jobId;
-        CandidateId = candidateId;
-        EmployerId = employerId;
-        Status = status;
+    public Application(ObjectId _id,ObjectId jobId, ObjectId candidateId, ObjectId employerId, int status, int opinion, int ranking) {
+        this._id=_id;
+        this.jobId = jobId;
+        this.candidateId = candidateId;
+        this.employerId = employerId;
+        this.status = status;
         this.opinion = opinion;
         this.ranking = ranking;
     }
 
-    public String getJobId() {
-        return JobId;
+    public String get_id() {
+        return _id.toHexString();
     }
 
-    public void setJobId(String jobId) {
-        JobId = jobId;
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
+
+    public String getJobId() {
+        return jobId.toHexString();
+    }
+
+    public void setJobId(ObjectId jobId) {
+        this.jobId = jobId;
     }
 
     public String getCandidateId() {
-        return CandidateId;
+        return candidateId.toHexString();
     }
 
-    public void setCandidateId(String candidateId) {
-        CandidateId = candidateId;
+    public void setCandidateId(ObjectId candidateId) {
+        this.candidateId = candidateId;
     }
 
     public String getEmployerId() {
-        return EmployerId;
+        return employerId.toHexString();
     }
 
-    public void setEmployerId(String employerId) {
-        EmployerId = employerId;
+    public void setEmployerId(ObjectId employerId) {
+        this.employerId = employerId;
     }
 
     public int getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(int status) {
-        Status = status;
+        this.status = status;
     }
 
     public int getOpinion() {

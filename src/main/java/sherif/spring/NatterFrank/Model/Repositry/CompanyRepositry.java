@@ -5,4 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import sherif.spring.NatterFrank.Model.Company;
 
 public interface CompanyRepositry extends MongoRepository<Company, ObjectId> {
+    Company findBy_id(ObjectId _id);
 }

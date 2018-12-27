@@ -8,30 +8,33 @@ import sherif.spring.NatterFrank.Model.Repositry.PersonRepositry;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/persons")
+@RequestMapping("/api/person")
 public class PersonController {
+
     @Autowired
     PersonRepositry PR;
 
     //Get all persons
-    @RequestMapping(value="/",method = RequestMethod.GET)
+
+    @RequestMapping(value="/", method = RequestMethod.GET)
     public List<Person> getAllPersons(){
         return PR.findAll();
     }
 
     //Get Person by Id
+
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public Optional<Person> getPersonById(@PathVariable("id") ObjectId id){
-        return PR.findById(id);
+    public Person getPersonById(@PathVariable("id") ObjectId id){
+        return PR.findBy_id(id);
     }
 
     //Update Person by Id
 
     @RequestMapping(value="/{id}", method = RequestMethod.PUT)
     public void updatePersonById(@PathVariable("id") ObjectId id, @Valid @RequestBody Person UpdatedPerson){
+        UpdatedPerson.set_id(id);
         PR.save(UpdatedPerson);
     }
 
@@ -41,6 +44,13 @@ public class PersonController {
     public Person createPerson(@Valid @RequestBody Person newPerson) {
         PR.save(newPerson);
         return newPerson;
+    }
+
+    //Delete a user
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public void deletePerson(@PathVariable ObjectId id){
+        PR.delete(PR.findBy_id(id));
     }
 
 }

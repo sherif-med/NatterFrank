@@ -1,11 +1,15 @@
 package sherif.spring.NatterFrank.Model;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Document
 public class Jobs {
+    @Id
+    private ObjectId _id;
     private String JobName;
     private String Location;
     private float LocLong;
@@ -26,7 +30,8 @@ public class Jobs {
     public Jobs() {
     }
 
-    public Jobs(String jobName, String location, float locLong, float locLat, String[] tags, String[] skillsRequired, String description, Date postedSince, String contract, String durationType, float durationValue, float sal, String salPer, byte status, String employer, String[] candidates) {
+    public Jobs(ObjectId _id, String jobName, String location, float locLong, float locLat, String[] tags, String[] skillsRequired, String description, Date postedSince, String contract, String durationType, float durationValue, float sal, String salPer, byte status, String employer, String[] candidates) {
+        this._id = _id;
         JobName = jobName;
         Location = location;
         LocLong = locLong;
@@ -43,6 +48,14 @@ public class Jobs {
         Status = status;
         Employer = employer;
         Candidates = candidates;
+    }
+
+    public String get_id() {
+        return _id.toHexString();
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     public String getJobName() {

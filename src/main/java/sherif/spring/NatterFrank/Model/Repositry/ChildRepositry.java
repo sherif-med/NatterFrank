@@ -5,4 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import sherif.spring.NatterFrank.Model.Child;
 
 public interface ChildRepositry extends MongoRepository<Child, ObjectId> {
+    Child findBy_id(ObjectId _id);
 }
