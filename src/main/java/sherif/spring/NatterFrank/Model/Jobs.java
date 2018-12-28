@@ -4,50 +4,52 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document
 public class Jobs {
     @Id
     private ObjectId _id;
-    private String JobName;
-    private String Location;
-    private float LocLong;
-    private float LocLat;
-    private String[] Tags;
-    private String[] SkillsRequired;
-    private String Description;
-    private Date PostedSince;
-    private String Contract;
-    private String DurationType;
-    private float DurationValue;
-    private float Sal;
-    private String SalPer; //salary per (once,hour,day,Month,Annual)
-    private byte Status; //activity of the post
-    private String Employer;
-    private String[] Candidates;
+    private String jobName;
+    private String location;
+    private float locLong;
+    private float locLat;
+    private String[] tags;
+    private String[] skillsRequired;
+    private String description;
+    private Date postedSince;
+    private String contract;
+    private String durationType;
+    private float durationValue;
+    private float sal;
+    private String salPer; //salary per (once,hour,day,Month,Annual)
+    private byte status; //activity of the post
+    private ObjectId employer;
+    private ObjectId[] candidates;
 
     public Jobs() {
     }
 
-    public Jobs(ObjectId _id, String jobName, String location, float locLong, float locLat, String[] tags, String[] skillsRequired, String description, Date postedSince, String contract, String durationType, float durationValue, float sal, String salPer, byte status, String employer, String[] candidates) {
+    public Jobs(ObjectId _id, String jobName, String location, float locLong, float locLat, String[] tags, String[] skillsRequired, String description, Date postedSince, String contract, String durationType, float durationValue, float sal, String salPer, byte status, ObjectId employer, ObjectId[] candidates) {
         this._id = _id;
-        JobName = jobName;
-        Location = location;
-        LocLong = locLong;
-        LocLat = locLat;
-        Tags = tags;
-        SkillsRequired = skillsRequired;
-        Description = description;
-        PostedSince = postedSince;
-        Contract = contract;
-        DurationType = durationType;
-        DurationValue = durationValue;
-        Sal = sal;
-        SalPer = salPer;
-        Status = status;
-        Employer = employer;
-        Candidates = candidates;
+        this.jobName = jobName;
+        this.location = location;
+        this.locLong = locLong;
+        this.locLat = locLat;
+        this.tags = tags;
+        this.skillsRequired = skillsRequired;
+        this.description = description;
+        this.postedSince = postedSince;
+        this.contract = contract;
+        this.durationType = durationType;
+        this.durationValue = durationValue;
+        this.sal = sal;
+        this.salPer = salPer;
+        this.status = status;
+        this.employer = employer;
+        this.candidates = candidates;
     }
 
     public String get_id() {
@@ -59,132 +61,134 @@ public class Jobs {
     }
 
     public String getJobName() {
-        return JobName;
+        return jobName;
     }
 
     public void setJobName(String jobName) {
-        JobName = jobName;
+        this.jobName = jobName;
     }
 
     public String getLocation() {
-        return Location;
+        return location;
     }
 
     public void setLocation(String location) {
-        Location = location;
+        this.location = location;
     }
 
     public float getLocLong() {
-        return LocLong;
+        return locLong;
     }
 
     public void setLocLong(float locLong) {
-        LocLong = locLong;
+        this.locLong = locLong;
     }
 
     public float getLocLat() {
-        return LocLat;
+        return locLat;
     }
 
     public void setLocLat(float locLat) {
-        LocLat = locLat;
+        this.locLat = locLat;
     }
 
     public String[] getTags() {
-        return Tags;
+        return tags;
     }
 
     public void setTags(String[] tags) {
-        Tags = tags;
+        this.tags = tags;
     }
 
     public String[] getSkillsRequired() {
-        return SkillsRequired;
+        return skillsRequired;
     }
 
     public void setSkillsRequired(String[] skillsRequired) {
-        SkillsRequired = skillsRequired;
+        this.skillsRequired = skillsRequired;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public Date getPostedSince() {
-        return PostedSince;
+        return postedSince;
     }
 
     public void setPostedSince(Date postedSince) {
-        PostedSince = postedSince;
+        this.postedSince = postedSince;
     }
 
     public String getContract() {
-        return Contract;
+        return contract;
     }
 
     public void setContract(String contract) {
-        Contract = contract;
+        this.contract = contract;
     }
 
     public String getDurationType() {
-        return DurationType;
+        return durationType;
     }
 
     public void setDurationType(String durationType) {
-        DurationType = durationType;
+        this.durationType = durationType;
     }
 
     public float getDurationValue() {
-        return DurationValue;
+        return durationValue;
     }
 
     public void setDurationValue(float durationValue) {
-        DurationValue = durationValue;
+        this.durationValue = durationValue;
     }
 
     public float getSal() {
-        return Sal;
+        return sal;
     }
 
     public void setSal(float sal) {
-        Sal = sal;
+        this.sal = sal;
     }
 
     public String getSalPer() {
-        return SalPer;
+        return salPer;
     }
 
     public void setSalPer(String salPer) {
-        SalPer = salPer;
+        this.salPer = salPer;
     }
 
     public byte getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(byte status) {
-        Status = status;
+        this.status = status;
     }
 
     public String getEmployer() {
-        return Employer;
+        return employer.toHexString();
     }
 
-    public void setEmployer(String employer) {
-        Employer = employer;
+    public void setEmployer(ObjectId employer) {
+        this.employer = employer;
     }
 
-    public String[] getCandidates() {
-        return Candidates;
+    public List<String> getCandidates() {
+        List<String> hexed = new ArrayList<String>();
+        for (ObjectId candidate:candidates) {
+            hexed.add(candidate.toHexString());
+        }
+        return hexed;
     }
 
-    public void setCandidates(String[] candidates) {
-        Candidates = candidates;
+    public void setCandidates(ObjectId[] candidates) {
+        this.candidates = candidates;
     }
-
-
 }

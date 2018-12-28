@@ -4,6 +4,10 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Document
 public class Company {
     @Id
@@ -106,8 +110,12 @@ public class Company {
         this.adrLat = adrLat;
     }
 
-    public String[] getResponsables() {
-        return responsables.toHexString();
+    public List<String> getResponsables() {
+        List<String> hexed = new ArrayList<String>();
+        for (ObjectId responsable:responsables) {
+            hexed.add(responsable.toHexString());
+        }
+        return hexed;
     }
 
     public void setResponsables(ObjectId[] responsables) {

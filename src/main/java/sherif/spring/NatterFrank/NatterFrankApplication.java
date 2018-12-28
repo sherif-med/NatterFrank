@@ -22,10 +22,10 @@ public class NatterFrankApplication implements CommandLineRunner {
 	}
 	@Override
 	public void run(String... args) throws Exception {
-		Person P1 = new Person();
+		/*Person P1 = new Person();
 		Pr.save(P1);
 		Application A1 = new Application();
-		AR.save(A1);
+		AR.save(A1);*/
 	}
 
 }

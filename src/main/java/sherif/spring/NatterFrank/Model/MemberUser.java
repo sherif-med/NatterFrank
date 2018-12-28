@@ -1,34 +1,38 @@
 package sherif.spring.NatterFrank.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mongodb.lang.Nullable;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document
 public class MemberUser extends Person{
-    private String FirstName;
-    private String LastName;
-    private Date BirthDate;
-    private int Age;
-    private String Email;
-    private String Nickname;
-    private String Bio;
-    private byte Gender;
-    private String PhoneNumber;
-    private String Occupation;
-    private String[] Skills;
-    private Date MemberSince;
-    private String Organization;
-    private String Country;
-    private String Gouvernerat;
-    private int ZipCode;
-    private String Aderess;
-    private float AdrLong;
-    private float AdrLat;
-    private String[] PostOccupations;
-    private float TrustScore;
-    private String Resume;
+    private String firstName;
+    private String lastName;
+    private Date birthDate;
+    private int age;
+    private String email;
+    private String nickname;
+    private String bio;
+    private byte gender;
+    private String phoneNumber;
+    private String occupation;
+    private String[] skills;
+    private Date memberSince;
+    private String organization;
+    private String country;
+    private String gouvernerat;
+    private int zipCode;
+    private String aderess;
+    private float adrLong;
+    private float adrLat;
+    private ObjectId[] postOccupations;
+    private float trustScore;
+    private String resume;
 
     public MemberUser() {
     }
@@ -37,205 +41,211 @@ public class MemberUser extends Person{
         super(_id, username, password);
     }
 
-    public MemberUser(ObjectId _id, String username, String password, String firstName, String lastName, Date birthDate, int age, String email, String nickname, String bio, byte gender, String phoneNumber, String occupation, String[] skills, Date memberSince, String organization, String country, String gouvernerat, int zipCode, String aderess, float adrLong, float adrLat, String[] postOccupations, float trustScore, String resume) {
+    public MemberUser(ObjectId _id, String username, String password, String firstName, String lastName, Date birthDate, int age, String email, String nickname, String bio, byte gender, String phoneNumber, String occupation, String[] skills, Date memberSince, String organization, String country, String gouvernerat, int zipCode, String aderess, float adrLong, float adrLat, ObjectId[] postOccupations, float trustScore, String resume) {
         super(_id, username, password);
-        FirstName = firstName;
-        LastName = lastName;
-        BirthDate = birthDate;
-        Age = age;
-        Email = email;
-        Nickname = nickname;
-        Bio = bio;
-        Gender = gender;
-        PhoneNumber = phoneNumber;
-        Occupation = occupation;
-        Skills = skills;
-        MemberSince = memberSince;
-        Organization = organization;
-        Country = country;
-        Gouvernerat = gouvernerat;
-        ZipCode = zipCode;
-        Aderess = aderess;
-        AdrLong = adrLong;
-        AdrLat = adrLat;
-        PostOccupations = postOccupations;
-        TrustScore = trustScore;
-        Resume = resume;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.age = age;
+        this.email = email;
+        this.nickname = nickname;
+        this.bio = bio;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.occupation = occupation;
+        this.skills = skills;
+        this.memberSince = memberSince;
+        this.organization = organization;
+        this.country = country;
+        this.gouvernerat = gouvernerat;
+        this.zipCode = zipCode;
+        this.aderess = aderess;
+        this.adrLong = adrLong;
+        this.adrLat = adrLat;
+        this.postOccupations = postOccupations;
+        this.trustScore = trustScore;
+        this.resume = resume;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public Date getBirthDate() {
-        return BirthDate;
+        return birthDate;
     }
 
     public void setBirthDate(Date birthDate) {
-        BirthDate = birthDate;
+        this.birthDate = birthDate;
     }
 
     public int getAge() {
-        return Age;
+        return age;
     }
 
     public void setAge(int age) {
-        Age = age;
+        this.age = age;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getNickname() {
-        return Nickname;
+        return nickname;
     }
 
     public void setNickname(String nickname) {
-        Nickname = nickname;
+        this.nickname = nickname;
     }
 
     public String getBio() {
-        return Bio;
+        return bio;
     }
 
     public void setBio(String bio) {
-        Bio = bio;
+        this.bio = bio;
     }
 
     public byte getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(byte gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getOccupation() {
-        return Occupation;
+        return occupation;
     }
 
     public void setOccupation(String occupation) {
-        Occupation = occupation;
+        this.occupation = occupation;
     }
 
     public String[] getSkills() {
-        return Skills;
+        return skills;
     }
 
     public void setSkills(String[] skills) {
-        Skills = skills;
+        this.skills = skills;
     }
 
     public Date getMemberSince() {
-        return MemberSince;
+        return memberSince;
     }
 
     public void setMemberSince(Date memberSince) {
-        MemberSince = memberSince;
+        this.memberSince = memberSince;
     }
 
     public String getOrganization() {
-        return Organization;
+        return organization;
     }
 
     public void setOrganization(String organization) {
-        Organization = organization;
+        this.organization = organization;
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
     public String getGouvernerat() {
-        return Gouvernerat;
+        return gouvernerat;
     }
 
     public void setGouvernerat(String gouvernerat) {
-        Gouvernerat = gouvernerat;
+        this.gouvernerat = gouvernerat;
     }
 
     public int getZipCode() {
-        return ZipCode;
+        return zipCode;
     }
 
     public void setZipCode(int zipCode) {
-        ZipCode = zipCode;
+        this.zipCode = zipCode;
     }
 
     public String getAderess() {
-        return Aderess;
+        return aderess;
     }
 
     public void setAderess(String aderess) {
-        Aderess = aderess;
+        this.aderess = aderess;
     }
 
     public float getAdrLong() {
-        return AdrLong;
+        return adrLong;
     }
 
     public void setAdrLong(float adrLong) {
-        AdrLong = adrLong;
+        this.adrLong = adrLong;
     }
 
     public float getAdrLat() {
-        return AdrLat;
+        return adrLat;
     }
 
     public void setAdrLat(float adrLat) {
-        AdrLat = adrLat;
+        this.adrLat = adrLat;
     }
 
-    public String[] getPostOccupations() {
-        return PostOccupations;
+
+    @JsonIgnore
+    public List<String> getPostOccupations() {
+        List<String> hexed = new ArrayList<String>();
+        for (ObjectId occ:postOccupations) {
+            hexed.add(occ.toHexString());
+        }
+        return hexed;
     }
 
-    public void setPostOccupations(String[] postOccupations) {
-        PostOccupations = postOccupations;
+    public void setPostOccupations(ObjectId[] postOccupations) {
+        this.postOccupations = postOccupations;
     }
 
     public float getTrustScore() {
-        return TrustScore;
+        return trustScore;
     }
 
     public void setTrustScore(float trustScore) {
-        TrustScore = trustScore;
+        this.trustScore = trustScore;
     }
 
     public String getResume() {
-        return Resume;
+        return resume;
     }
 
     public void setResume(String resume) {
-        Resume = resume;
+        this.resume = resume;
     }
 }
